@@ -1,40 +1,77 @@
-import React from 'react'
+'use client'
+
+import React,{useEffect, useState} from 'react'
 import Image from 'next/image'
+import Link from "next/link";
 import SideNavBar from '../../components/SideNavBar'
+import HomePageMain from '@/components/HomePageMain'
+import { auth } from '@/auth'
+// import { seed } from '@/database/seed'
+// import { auth } from '@/auth'
+
+// seed()
+
+// interface Session {
+//     user: {
+//         id: string,
+//         name: string,
+//         email: string
+//     }
+// }
 
 const Home = () => {
+    const [isOpen,setOpen] = useState(false)
+    const [userSession, setUserSession] = useState<unknown>(null)
+
+    const handleClick = () => {
+        return setOpen(!isOpen)
+    } 
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const session = await auth()
+            return setUserSession(session)
+        }
+        fetchData();
+    }, [])
+
+    console.log(userSession)
+
     return (
         <div className="root-main-div">
-            {/* <SideNavBar /> */}
+            {isOpen? <SideNavBar handleClick={handleClick}/> : null}
             <div className='header'>
-                <li>
-                    <button>
+                <li className='head-one'>
+                    <button onClick={handleClick}>
                         <Image src="/icons/dock_to_left_24dp_034F39_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
                     </button>
                 </li>
-                <li>
-                    <Image src="/icons/blueberry.png" alt="logo" width={40} height={40}/>
-                    <h1 className='text-3xl'>Welcome to Blueberry&apos;s shop</h1>
+                <li className='head-two'>
+                    <Image src="/icons/blueberry.png" alt="logo" width={80} height={60}/>
+                    <h1 className='text-4xl'>Blueberry&apos;s weed shop</h1>
                 </li>
-                <ul>
-                    <li>
-                        <Image src="/icons/person_24dp_034F39_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
-                        <span>Account</span>
+                <ul className='head-three'>
+                    <li className='acc'>
+                        <Link href={`/profile`}>
+                            <Image src="/icons/person_24dp_034F39_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
+                            <span>Account</span>
+                        </Link>
                     </li>
-                    <li>
-                        <Image src="/icons/shopping_cart_24dp_034F39_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
-                        <span>Cart</span>
+                    <li className='cart'>
+                        <Link href={'/cart'}>
+                            <Image src="/icons/shopping_cart_24dp_034F39_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
+                            <span>(number)</span>
+                        </Link>
                     </li>
                 </ul>
             </div>
-            <div className='main-content'>
-                <div className=''>
-                    <h1>This section will display a bunch of items</h1>
-                    <span>9 flower items</span>
-                    <span>9 preroll items</span>
-                    <span>9 edible items</span>
-                    <span>9 vape items</span>
-                </div>
+            <HomePageMain />
+            <div className='credits'>
+                <h1 className=''>Credits</h1>
+                <ul>
+                    <Image src="/icons/weed.png" alt="logo" width={24} height={24}/>
+                    <li>Icons made by <a href="https://www.flaticon.com/free-icons/weed" title="Weed icons">Weed icons created by Those Icons - Flaticon</a></li>
+                </ul>
             </div>
             <div className='information'>
                 <ul>
@@ -48,13 +85,6 @@ const Home = () => {
                         <span>Payment Methods</span>
                         <p>Zelle, Paypal, Apple Pay, CashApp, Cash</p>
                     </li>
-                </ul>
-            </div>
-            <div className='credits'>
-                <h1 className=''>Credits</h1>
-                <ul>
-                    <Image src="/icons/weed.png" alt="logo" width={24} height={24}/>
-                    <li>Icons made by <a href="https://www.flaticon.com/free-icons/weed" title="Weed icons">Weed icons created by Those Icons - Flaticon</a></li>
                 </ul>
             </div>
             <div className='footer'>

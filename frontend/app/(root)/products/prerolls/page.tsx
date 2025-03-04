@@ -1,12 +1,16 @@
-import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+'use client'
+import SideNavBar from '@/components/SideNavBar';
+import React from 'react';
+import Image from "next/image"
+import Link from 'next/link';
 
-// sidebar turns into bottm nav bar when turned into a mobile view
+const prerollsPage = () => {
 
-const SideNavBar = ({ handleClick }: { handleClick: () => void }) => {
+    const handleClick = () => {}
+
     return (
-        <nav id='sidebar' className='nav-sidebar'>
+        <div className='prerolls'>
+            <nav id='sidebar' className='nav-sidebar'>
                 <ul>
                     <li>
                         <button onClick={handleClick}>
@@ -56,7 +60,8 @@ const SideNavBar = ({ handleClick }: { handleClick: () => void }) => {
                     </ul> 
                 </ul>
             </nav>
+        </div>
     )
 }
 
-export default SideNavBar
+export default prerollsPage;

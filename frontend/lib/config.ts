@@ -1,0 +1,5 @@
+import {config} from "dotenv";
+
+config({path:"./.env"})
+
+export const {DATABASE_URL,UPSTASH_REDIS_REST_URL,UPSTASH_REDIS_REST_TOKEN,GOOGLE_CLIENT_ID,GOOGLE_SECRET_KEY,SESSION_SECRET,JWT_EXPIRES_IN,JWT_SECRET, PORT} = process.env;
