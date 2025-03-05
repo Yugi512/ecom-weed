@@ -5,7 +5,7 @@
 /* :root {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --sidebar: hsl(0 0% 98%);
+  --sidebar: hsl(0 0% 98%);WW
   --sidebar-foreground: hsl(240 5.3% 26.1%);
   --sidebar-primary: hsl(240 5.9% 10%);
   --sidebar-primary-foreground: hsl(0 0% 98%);
@@ -14,22 +14,11 @@
   --sidebar-border: hsl(220 13% 91%);
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
-
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-} */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #Faecd7;
-    --foreground: #034f39;
-  }
-  *{
-    margin: 0;
-    padding: 0;
-  }
-}
+  --background: #Faecd7;
+  --foreground: #034f39;
+} 
 
 body {
   color: var(--foreground);
@@ -72,8 +61,6 @@ body {
   padding: 5px 1em;
   width: 250px;
 }
-
-
 
 #sidebar > ul > li > a > img{
   flex-shrink: 0;
@@ -231,126 +218,11 @@ body {
 
 /* home page main content section so like the carousel images and other goodies */
 
-/* .main-content{
+.page-header{
   display: grid;
-  flex-direction: row;
-  grid-template-columns: auto;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  width: 100%;
-  height: 100%px;
-  margin-top: auto;
-  background-color: #F7E7CE;
-} */
-
-/* Image slider effect */ 
-/* .home-flower{
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-template-columns: auto auto auto;
-  background-color: #034f39;
-  color: wheat;
-  width: 100%;
+  grid-template-columns: 1fr;
 }
 
-.home-prerolls > ul{
-  display: grid;
-  grid-template-columns: auto auto auto;
-}
-
-.home-edibles> ul{
-  display: grid;
-  grid-template-columns: auto auto auto;
-}
-
-.home-vapes> ul{
-  display: grid;
-  grid-template-columns: auto auto auto;
-} */
-
-/* */
-/* .credits{
-  width: 100%;
-  height: 100%;
-  background-color: #f4e1c5;
-} */
-
-/* */
-/* .information{
-  width: 100%;
-  height: 100%;
-  background-color: #549369;
-  color: #F7E7CE;
-} */
-
-/* */
-/* .footer{
-  width: 100%;
-  height: 100%;
-  background-color: #034f39;
-  color: #ede7d0;
-  text-align: center;
-  padding-top: 20px;
-} */
-
-/* products css */
-/* 
-.products-page{
-  display: grid;
-  width: 100%;
-  height: 100vh;
-  grid-template-columns: auto auto auto auto auto auto auto; 
-  grid-template-rows: auto auto auto auto auto auto auto;
-  list-style: none;
-}
-
-.prod-one{
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 8;
-  flex-wrap: wrap;
-  height: 1px;
-}
-
-
-
-.prod-two{
-  grid-row-start: 2;
-  grid-row-end: 6;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  background-color: #05263b;
-  flex-wrap: wrap;
-}
-
-.prod-three{
-  grid-row-start: 2;
-  grid-row-end: 6;
-  grid-column-start: 3;
-  grid-column-end: 8;
-  background-color: #9ca6b8;
-  flex-wrap: wrap;
-}
-
-.prod-four{
-  grid-row-start: 6;
-  grid-row-end: 7;
-  grid-column-start: 1;
-  grid-column-end: 8;
-  background-color: #163b50;
-  flex-wrap: wrap;
-}
-
-.prod-five{
-  grid-row-start: 7;
-  grid-row-end: 8;
-  grid-column-start: 1;
-  grid-column-end: 8;
-  background-color: #aeb8c4;
-  flex-wrap: wrap;
-} */
 
 .dark {
   --sidebar: hsl(240 5.9% 10%);

@@ -1,12 +1,14 @@
 'use client'
-import SideNavBar from '@/components/SideNavBar';
-import React from 'react';
-import Image from "next/image"
-import { Session } from "next-auth";
-import SideBar from '@/components/SideNavBar';
-import { usePathname } from 'next/navigation';
 
-const prerollsPage = ({ session, logOut }: { session: Session; logOut: Function }) => {
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+
+import SideBar from "@/components/SideNavBar";
+import { Session } from "next-auth";
+import { usePathname } from "next/navigation";
+
+
+const Page = ({ session, logOut }: { session: Session; logOut: Function }) => {
     const pathName = usePathname()
     
     return (
@@ -24,7 +26,7 @@ const prerollsPage = ({ session, logOut }: { session: Session; logOut: Function 
                     </span>
                 </header>
                 <span>
-                    contents
+                    {session?.user?.name}
                 </span>
                 <div className='information'>
                     <ul>
@@ -48,4 +50,4 @@ const prerollsPage = ({ session, logOut }: { session: Session; logOut: Function 
     )
 }
 
-export default prerollsPage;
+export default Page;

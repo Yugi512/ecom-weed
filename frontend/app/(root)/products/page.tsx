@@ -1,59 +1,51 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import SideNavBar from "@/components/SideNavBar";
-import Link from "next/link";
-import { signOut } from "@/auth";
+
+import SideBar from "@/components/SideNavBar";
+import { Session } from "next-auth";
 import { usePathname } from "next/navigation";
 
-const AllProducts = () =>{
-    const pathName = usePathname()
-    console.log(pathName)
 
+const AllProducts = ({ session, logOut }: { session: Session; logOut: Function }) => {
+    const pathName = usePathname()
+    
     return (
-        <div className="products-page">
-            {isOpen? null :<SideNavBar handleClick={handleClick}/>}
-            <div className="prod-one">
-            <div className='header'>
-                <li className='head-one'>
-                    <button onClick={handleClick}>
-                        <Image src="/icons/dock_to_left_24dp_034F39_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
-                    </button>
-                </li>
-                <li className='head-two'>
-                    <Image src="/icons/blueberry.png" alt="logo" width={80} height={60}/>
-                    <h1 className='text-4xl'>Blueberry&apos;s weed shop</h1>
-                </li>
-                <ul className='head-three'>
-                    <li className='acc'>
-                        <Link href={`/profile`}>
-                            <Image src="/icons/person_24dp_034F39_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
-                            <span>Account</span>
-                        </Link>
-                    </li>
-                    <li className='cart'>
-                        <Link href={'/cart'}>
-                            <Image src="/icons/shopping_cart_24dp_034F39_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
-                            <span>(number)</span>
-                        </Link>
-                    </li>
-                    <li>
-                        {/* <form action={
-                            async () => {
-                                'use server'
-                                await signOut()
-                            }}>
-                            <button>Logout</button>
-                        </form> */}
-                    </li>
-                </ul>
+        <div className="main-body-wrapper">
+            <SideBar pathName={`${pathName}`} />
+            <div className="main-content-wrapper">
+                <header>
+                    <h1>Blueberry&apos;s weed shop</h1>
+                    <span>
+                        <button onClick={() => logOut()}>
+                            logout
+                        </button>
+                        <span>profile</span>
+                        <span>cart</span>
+                    </span>
+                </header>
+                <span>
+                    {session?.user?.name}
+                </span>
+                <div className='information'>
+                    <ul>
+                        <li>
+                            <Image src="/icons/schedule_24dp_F7E7CE_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
+                            <span>Business Hours</span>
+                            <p>24/7 on call</p>
+                        </li>
+                        <li>
+                            <Image src="/icons/payments_24dp_F7E7CE_FILL0_wght400_GRAD0_opsz24 (1).svg" alt="logo" width={24} height={24}/>
+                            <span>Payment Methods</span>
+                            <p>Zelle, Paypal, Apple Pay, CashApp, Cash</p>
+                        </li>
+                    </ul>
+                </div>
+                <div className='footer'>
+                    <h1>Footer Nav Bar for when they scroll too far down</h1>
+                </div>
             </div>
-            </div>    
-            <div className="prod-two"></div>
-            <div className="prod-three"></div>
-            <div className="prod-four"></div>
-            <div className="prod-five"></div>
         </div>
     )
 }

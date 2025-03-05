@@ -1,7 +1,7 @@
 import { auth, signOut } from "@/auth";
 import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
-import AllProducts from "./page";
+import FlowerPage from "./page";
 
 const Layout = async ({children}: {children:ReactNode}) => {
     const session = await auth()
@@ -11,7 +11,7 @@ const Layout = async ({children}: {children:ReactNode}) => {
     }
     return (
         <SessionProvider session={session}>
-            <AllProducts session={session!} logOut={logOut}/>
+            <FlowerPage session={session!} logOut={logOut}/>
         </SessionProvider>
     )
 }

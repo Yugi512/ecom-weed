@@ -3,7 +3,7 @@ import React from 'react';
 
 import {zodResolver} from '@hookform/resolvers/zod';
 import {DefaultValues, SubmitHandler, useForm, UseFormReturn,FieldValues, Path} from 'react-hook-form';
-import { ZodType} from 'zod';
+import {z, ZodType} from 'zod';
 
 import { Button } from "@/components/ui/button"
 import {
@@ -51,8 +51,8 @@ const AuthForm = <T extends FieldValues>({type,schema, defaultValues , onSubmit}
         }
     }
     return (
-        <div className='flex flex-col gap-4 text-ivory'>
-            <h1 className='text-2xl font-semibold tex-ivory'>
+        <div className='flex flex-col gap-4'>
+            <h1 className='text-2xl font-semibold text-ivory'>
                 {isSignIn ? "Welcome back!" : "Create an account"}
             </h1>
             <p className='text-ivory'>{isSignIn ? "Sign in to see your points and rewards" : "Sign up to receive points and get rewards"}</p>
@@ -68,14 +68,14 @@ const AuthForm = <T extends FieldValues>({type,schema, defaultValues , onSubmit}
                                 <FormItem>
                                     <FormLabel className='capitalize text-ivory'>{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                                     <FormControl>
-                                        <Input required type={ FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]} {...field} className='w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-black placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none ivory'/>
+                                        <Input required type={ FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]} {...field} className='w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-black placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none champagne'/>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
                     ))}
-                    <Button type="submit" className='bg-primary text-ivory hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base'>{isSignIn ? "Sign In": "Sign Up"}</Button>
+                    <Button type="submit" className='text-ivory hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base'>{isSignIn ? "Sign In": "Sign Up"}</Button>
                 </form>
             </Form>
             <p className='text-center text-base font-medium text-ivory'>

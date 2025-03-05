@@ -4,27 +4,29 @@ import React,{useEffect, useState} from 'react'
 import Image from 'next/image'
 import Link from "next/link";
 import SideBar from '../../components/SideNavBar'
-import HomePageMain from '@/components/HomePageMain'
-import { auth } from '@/auth'
 import { usePathname } from 'next/navigation';
-// import { seed } from '@/database/seed'
-// import { auth } from '@/auth'
+import { Session } from 'next-auth';
 
-// seed()
 
-const Home = () => {
+const Home = ({ session, logOut }: { session: Session; logOut: Function }) => {
     const pathName = usePathname()
-    console.log(pathName)
     
     return (
         <div className="main-body-wrapper">
-            <SideBar />
+            <SideBar pathName={`${pathName}`} />
             <div className="main-content-wrapper">
                 <header>
-                    Blueberry&apos;s weed shop
+                    <h1>Blueberry&apos;s weed shop</h1>
+                    <span>
+                        <button onClick={() => logOut()}>
+                            logout
+                        </button>
+                        <span>profile</span>
+                        <span>cart</span>
+                    </span>
                 </header>
                 <span>
-                    text
+                    contents
                 </span>
                 <div className='information'>
                     <ul>

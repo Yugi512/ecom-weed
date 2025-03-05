@@ -1,6 +1,6 @@
 "use client";
 
-import AuthForm from "@/components/Authform";
+import AuthForm from "@/components/userAuthForm";
 import { signInWithCredentials } from "@/lib/actions/auth";
 import { signInSchema } from "@/lib/validations";
 import React from "react";

@@ -52,10 +52,10 @@ const AuthForm = <T extends FieldValues>({type,schema, defaultValues , onSubmit}
     }
     return (
         <div className='flex flex-col gap-4'>
-            <h1 className='text-2xl font-semibold text-white'>
+            <h1 className='text-2xl font-semibold text-ivory'>
                 {isSignIn ? "Welcome back!" : "Create an account"}
             </h1>
-            <p className='text-white'>{isSignIn ? "Sign in to see your points and rewards" : "Sign up to receive points and get rewards"}</p>
+            <p className='text-ivory'>{isSignIn ? "Sign in to see your points and rewards" : "Sign up to receive points and get rewards"}</p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6 w-full ">
 
@@ -66,19 +66,19 @@ const AuthForm = <T extends FieldValues>({type,schema, defaultValues , onSubmit}
                             name={field as Path<T>}
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel className='capitalize text-white'>{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
+                                    <FormLabel className='capitalize text-ivory'>{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                                     <FormControl>
-                                        <Input required type={ FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]} {...field} className='w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-black placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none bg-dark-300'/>
+                                        <Input required type={ FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]} {...field} className='w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-black placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none champagne'/>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
                     ))}
-                    <Button type="submit" className='bg-primary text-white hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base'>{isSignIn ? "Sign In": "Sign Up"}</Button>
+                    <Button type="submit" className='text-ivory hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base'>{isSignIn ? "Sign In": "Sign Up"}</Button>
                 </form>
             </Form>
-            <p className='text-center text-base font-medium text-white'>
+            <p className='text-center text-base font-medium text-ivory'>
                 {isSignIn ? "Don't have an account? " : "Already have an account? "}
                 <Link href={isSignIn? "/sign-up" : "/sign-in"} className='text-white'>{isSignIn ? "Create an account " : "Sign in "}</Link>
             </p>
