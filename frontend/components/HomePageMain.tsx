@@ -7,7 +7,7 @@ import HomeVapes from "./HomeVapes";
 const HomePageMain = () => {
     return (
         <div className='main-content'>
-            <div className="home-flower">
+            {/* <div className="home-flower">
                 <HomeFlower />
             </div>
             <div className="home-prerolls">
@@ -18,7 +18,7 @@ const HomePageMain = () => {
             </div>
             <div className="home-vapes">
                 <HomeVapes />
-            </div>
+            </div> */}
         </div>
     )
 }

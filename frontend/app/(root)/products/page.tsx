@@ -5,13 +5,11 @@ import Image from "next/image";
 import SideNavBar from "@/components/SideNavBar";
 import Link from "next/link";
 import { signOut } from "@/auth";
+import { usePathname } from "next/navigation";
 
 const AllProducts = () =>{
-    const [isOpen,setOpen] = useState(true)
-    
-    const handleClick = () => {
-        return setOpen(!isOpen)
-    } 
+    const pathName = usePathname()
+    console.log(pathName)
 
     return (
         <div className="products-page">
