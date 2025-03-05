@@ -12,7 +12,6 @@ const Page = ({ session, logOut }: { session: Session; logOut: Function }) => {
     
     return (
         <div className="main-body-wrapper">
-            <SideBar pathName={`${pathName}`} />
             <div className="main-content-wrapper">
                 <header>
                 <h1>Blueberry&apos;s weed shop</h1>

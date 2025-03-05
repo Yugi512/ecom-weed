@@ -11,7 +11,7 @@ const Layout = async ({children}: {children:ReactNode}) => {
     }
     return (
         <SessionProvider session={session}>
-            <Page session={session!} logOut={logOut}/>
+            <Page session={session!} logOut={logOut} children={children}/>
         </SessionProvider>
     )
 }

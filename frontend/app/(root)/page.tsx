@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 import { Session } from 'next-auth';
 
 
-const Home = ({ session, logOut }: { session: Session; logOut: Function }) => {
+const Home = ({ session, logOut, children }: { session: Session; logOut: Function, children: React.ReactNode }) => {
     const pathName = usePathname()
     
     return (
@@ -25,9 +25,7 @@ const Home = ({ session, logOut }: { session: Session; logOut: Function }) => {
                         <span>cart</span>
                     </span>
                 </header>
-                <span>
-                    contents
-                </span>
+                {children}
                 <div className='information'>
                     <ul>
                         <li>

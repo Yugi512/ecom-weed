@@ -8,7 +8,6 @@ import { Session } from "next-auth";
 const vapesPage = ({ session, logOut }: { session: Session; logOut: Function }) => {
     return (
         <div className="main-body-wrapper">
-            <SideBar />
             <div className="main-content-wrapper">
                 <header>
                     Blueberry&apos;s weed shop
