@@ -218,9 +218,166 @@ body {
 
 /* home page main content section so like the carousel images and other goodies */
 
-.page-header{
+/* .image-color{
+  background-color: #fbe698;
+}
+
+.image-color .image > img {
+  mix-blend-mode: darken;
+} */
+
+.content-container{
+  /* background-image: linear-gradient(to top right, #fbe698 , #F7E7CE); */
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider{
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden; 
+}
+
+.item{
+  background-image: linear-gradient(to top right , #F7E7CE , #fff);
+  /* background-image: linear-gradient(to bottom right , #fbe698 , #fff); */
+  text-wrap: wrap;
+  position: absolute;
+  width: 350px;
+  height: 500px;
+  text-align: justify;
+  /* background-color: #fff; */
+  border-radius: 4%;
+  padding: 20px;
+  transition: 0.5s;
+  left: calc(50% - 180px);
+  top: 0;
+}
+
+#next, #prev{
+  position: absolute;
+  top: 40%;
+  color: #08313a;
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  left: 100px;
+}
+
+#next{
+  left: unset;
+  right: 50px;
+}
+
+
+.product-items-page{
   display: grid;
+  flex-direction: column;
   grid-template-columns: 1fr;
+  justify-content: space-between;
+  justify-self: center;
+}
+
+.delivery{
+  text-align: justify;
+}
+
+.header{
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+}
+
+.header > span:first-child{
+  font-size: 30px;
+  display: grid;
+  grid-template-columns: auto 1em;
+  justify-self: end;
+  margin-right: 90px;
+  > h1{
+    margin-top: 20px;
+    width: 400px;
+  }
+}
+
+.header .user-stuff{
+  justify-self: end;
+  justify-content: space-between;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 1fr;
+}
+
+.header .user-stuff > button{
+  border: 2px solid;
+  margin-right: 30px;
+  padding: 10px 10px;
+  border-radius: 20%;
+  background-color: #08313a;
+  color: #fbe698;
+}
+
+.header .user-stuff .profile{
+  margin-left: 10px;
+}
+
+
+.information{
+  background-color: #549369;
+  color: #F7E7CE;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; 
+  font-size: 22px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.information > div:first-child{
+  justify-self: center;
+  margin-right: 50px;
+  margin-bottom: 66px;
+}
+
+.information .middle{
+  justify-self: center;
+  margin-right: 150px;
+  margin-bottom: 26px;
+}
+
+.information > div:last-child{
+  justify-self: center;
+  margin-right: 100px;
+  margin-bottom: 31px;
+}
+
+.information > div{
+  justify-content: center;
+  justify-self: flex-start;
+  text-wrap: wrap;
+}
+
+.information > div > div{
+  text-wrap: wrap;
+  text-align: center;
+  > P {
+    text-align: center;
+    width: 250px;
+  }
+}
+
+.footer{
+  color: #F7E7CE;
+  background-color: #034f39;
+  font-size: 20px;
 }
 
 

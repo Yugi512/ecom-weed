@@ -20,7 +20,6 @@ const SideBar = ({pathName}: {pathName: string}) => {
     function highLightText(){
         pathElement?.classList.add('active')
     }
-    console.log(pathElement )
     
     highLightText()
 

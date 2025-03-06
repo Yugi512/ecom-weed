@@ -1,1 +1,6 @@
 #task planner
+
+
+we need to move out the home page with the side abr and the usepath and then move plug it inot the home page
+we plug and pass rthe info we need from the home page of the folder/route
+so like it owuld be flowers page and we plufg in what we need into the component that has the necesary info so basically make it into a component and pluf it inwher ewe need it to be 
