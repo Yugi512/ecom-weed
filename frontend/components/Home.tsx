@@ -6,17 +6,14 @@ import SideBar from '@/components/SideNavBar'
 import { redirect, usePathname } from 'next/navigation';
 import { Session } from 'next-auth';
 import Link from 'next/link';
+import HomeFlower from './HomeFlower';
 
 
 const Home = ({session, logOut} : {session: Session, logOut: Function}) => {
     const pathName = usePathname()
     const [flowers, setFlowers] = useState<any>([])
     const [flowerInventory,setInventory] = useState<any>([])
-    const [items, setItems] = useState<any>([])
-    const [nextBtn, setNextBtn] = useState<Element>()
-    const [prevBtn, setPrevBtn] = useState<Element>()
-
- 
+    
     useEffect(() => {
         fetch("http://localhost:3000/api/flowers/true")
             .then(res => res.json())
@@ -26,42 +23,12 @@ const Home = ({session, logOut} : {session: Session, logOut: Function}) => {
             .then(res => res.json())
             .then(data => setFlowers(data))
 
-        setItems(document?.querySelectorAll('.slider .item')!)
-        setNextBtn(document?.getElementById('next')!)
-        setPrevBtn(document?.getElementById('prev')!)
-
     },[])
 
-    let len = items.length
-
-    let active = 3;
-    function loadShow(){
-        let stt = 0;
-        for(let i = active + 1; i < len; i++ ){
-            stt++;
-            items[i].style.transform = `translateX(${120*stt}px) scale(${1 -0.2*stt}) perspective(16px) rotateY(-1deg)`;
-            items[1].style.zIndex = -stt;
-            items[1].style.filter = 'blur(5px)';
-            items[1].style.opacity = stt > 2 ? 0 : 0.6; 
-        }
-        stt = 0;
-        for(let i = active - 1; i >= 0; i-- ){
-            stt++;
-            items[i].style.transform = `translateX(${-120*stt}px) scale(${1 -0.2*stt}) perspective(16px) rotateY(-1deg)`;
-            items[1].style.zIndex = -stt;
-            items[1].style.filter = 'blur(5px)';
-            items[1].style.opacity = stt > 2 ? 0 : 0.6; 
-        }
-
-    }
-
-    loadShow()
-
+    
     const user = session?.user
 
     const filteredFlowerInven = flowers.filter((item: any) => flowerInventory.map((inven: { flowerID: any; }) => inven.flowerID).includes(item.id)).slice(0,7)
-    
-    console.log(items)
 
     return (
         <div className="main-body-wrapper">
@@ -90,60 +57,7 @@ const Home = ({session, logOut} : {session: Session, logOut: Function}) => {
                         </span>
                     </span>
                 </header>
-                <span className='content-container'>
-                    <div className='slider'>
-                        {/* {filteredFlowerInven.map((flower: any,index: any) => {
-                            return (
-                                <div className='item-card'>
-                                    <Link href={`/products/flowers/${flower.name}`} key={flower.name}>
-                                        <Image className="image-color image" src={`${flower.imgUrl}`} alt={''} height={200} width={200}/>
-                                        <p>{flower.type}</p>
-                                        <h3>{flower.name}</h3>
-                                    </Link>
-                                </div>
-                            )
-                        })} */}
-                        
-                        <div className="item">
-                            <h1>slide 1</h1>
-                            Yes, a variable can hold a JSX element. JSX expressions are essentially syntactic sugar for JavaScript objects, which can be assigned to variables. After compilation, JSX transforms into regular JavaScript function calls that evaluate to JavaScript objects. This allows for the storage and manipulation of JSX elements within variables, enabling functionalities such as conditional rendering and dynamic content updates
-                        </div>
-                        <div className="item">
-                            <h1>slide 2</h1>
-                            Yes, a variable can hold a JSX element. JSX expressions are essentially syntactic sugar for JavaScript objects, which can be assigned to variables. After compilation, JSX transforms into regular JavaScript function calls that evaluate to JavaScript objects. This allows for the storage and manipulation of JSX elements within variables, enabling functionalities such as conditional rendering and dynamic content updates
-                        </div>
-                        <div className="item">
-                            <h1>slide 3</h1>
-                            Yes, a variable can hold a JSX element. JSX expressions are essentially syntactic sugar for JavaScript objects, which can be assigned to variables. After compilation, JSX transforms into regular JavaScript function calls that evaluate to JavaScript objects. This allows for the storage and manipulation of JSX elements within variables, enabling functionalities such as conditional rendering and dynamic content updates
-                        </div>
-                        <div className="item">
-                            <h1>slide 4</h1>
-                            Yes, a variable can hold a JSX element. JSX expressions are essentially syntactic sugar for JavaScript objects, which can be assigned to variables. After compilation, JSX transforms into regular JavaScript function calls that evaluate to JavaScript objects. This allows for the storage and manipulation of JSX elements within variables, enabling functionalities such as conditional rendering and dynamic content updates
-                        </div>
-                        <div className="item">
-                            <h1>slide 5</h1>
-                            Yes, a variable can hold a JSX element. JSX expressions are essentially syntactic sugar for JavaScript objects, which can be assigned to variables. After compilation, JSX transforms into regular JavaScript function calls that evaluate to JavaScript objects. This allows for the storage and manipulation of JSX elements within variables, enabling functionalities such as conditional rendering and dynamic content updates
-                        </div>
-                        <div className="item">
-                            <h1>slide 6</h1>
-                            Yes, a variable can hold a JSX element. JSX expressions are essentially syntactic sugar for JavaScript objects, which can be assigned to variables. After compilation, JSX transforms into regular JavaScript function calls that evaluate to JavaScript objects. This allows for the storage and manipulation of JSX elements within variables, enabling functionalities such as conditional rendering and dynamic content updates
-                        </div>
-                        <div className="item">
-                            <h1>slide 7</h1>
-                            Yes, a variable can hold a JSX element. JSX expressions are essentially syntactic sugar for JavaScript objects, which can be assigned to variables. After compilation, JSX transforms into regular JavaScript function calls that evaluate to JavaScript objects. This allows for the storage and manipulation of JSX elements within variables, enabling functionalities such as conditional rendering and dynamic content updates
-                        </div>
-                        <div className="item">
-                            <h1>slide 8</h1>
-                            Yes, a variable can hold a JSX element. JSX expressions are essentially syntactic sugar for JavaScript objects, which can be assigned to variables. After compilation, JSX transforms into regular JavaScript function calls that evaluate to JavaScript objects. This allows for the storage and manipulation of JSX elements within variables, enabling functionalities such as conditional rendering and dynamic content updates
-                        </div>
-                        <div className="item">
-                            <h1>slide 9</h1>
-                            Yes, a variable can hold a JSX element. JSX expressions are essentially syntactic sugar for JavaScript objects, which can be assigned to variables. After compilation, JSX transforms into regular JavaScript function calls that evaluate to JavaScript objects. This allows for the storage and manipulation of JSX elements within variables, enabling functionalities such as conditional rendering and dynamic content updates
-                        </div>
-                    </div>
-                    <button id='next'><Image src={'/icons/arrow_forward.svg'} alt={''} height={40} width={40}/></button>
-                    <button id='prev'><Image src={'/icons/arrow_back.svg'} alt={''} height={40} width={40}/></button>
-                </span>
+                <HomeFlower flowers={filteredFlowerInven}/>
                 <div className='information'>
                     <div className=''>
                         <Image src="/icons/schedule_40.svg" alt="logo" width={40} height={40}/>
