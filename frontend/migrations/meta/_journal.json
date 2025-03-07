@@ -8,6 +8,20 @@
       "when": 1741023004261,
       "tag": "0000_awesome_bedlam",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1741319154398,
+      "tag": "0001_right_shard",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1741358608514,
+      "tag": "0002_wonderful_scarecrow",
+      "breakpoints": true
     }
   ]
 }

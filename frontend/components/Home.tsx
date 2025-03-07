@@ -7,28 +7,86 @@ import { redirect, usePathname } from 'next/navigation';
 import { Session } from 'next-auth';
 import Link from 'next/link';
 import HomeFlower from './HomeFlower';
+import { seed } from '@/database/seed';
+import HomePrerolls from './HomePrerolls';
+import HomeEdibles from './HomeEdibles';
+import HomeVapes from './HomeVapes';
 
 
 const Home = ({session, logOut} : {session: Session, logOut: Function}) => {
     const pathName = usePathname()
+
     const [flowers, setFlowers] = useState<any>([])
     const [flowerInventory,setInventory] = useState<any>([])
-    
+
+    const [prerolls, setPrerolls] = useState<any>([])
+    const [prerollsInventory,setPrerollsInventory] = useState<any>([])
+
+    const [edibles, setEdibles] = useState<any>([])
+    const [ediblesInventory,setEdiblesInventory] = useState<any>([])
+
+    const [vapes, setVapes] = useState<any>([])
+    const [vapesInventory,setVapesInventory] = useState<any>([])
+ 
     useEffect(() => {
-        fetch("http://localhost:3000/api/flowers/true")
+        fetch("http://localhost:3000/api/flowers/inventory")
             .then(res => res.json())
             .then(data => setInventory(data))
 
         fetch("http://localhost:3000/api/flowers")
             .then(res => res.json())
             .then(data => setFlowers(data))
-
+        
     },[])
 
-    
+    useEffect(() => {
+        fetch("http://localhost:3000/api/edibles/inventory")
+            .then(res => res.json())
+            .then(data => setEdiblesInventory(data))
+
+        fetch("http://localhost:3000/api/edibles")
+            .then(res => res.json())
+            .then(data => setEdibles(data))
+        
+    },[])
+
+    useEffect(() => {
+        fetch("http://localhost:3000/api/prerolls/inventory")
+            .then(res => res.json())
+            .then(data => setPrerollsInventory(data))
+
+        fetch("http://localhost:3000/api/prerolls")
+            .then(res => res.json())
+            .then(data => setPrerolls(data))
+        
+    },[])
+
+    useEffect(() => {
+        fetch("http://localhost:3000/api/vapes/inventory")
+            .then(res => res.json())
+            .then(data => setVapesInventory(data))
+
+        fetch("http://localhost:3000/api/vapes")
+            .then(res => res.json())
+            .then(data => setVapes(data))
+        
+    },[])
+
     const user = session?.user
 
-    const filteredFlowerInven = flowers.filter((item: any) => flowerInventory.map((inven: { flowerID: any; }) => inven.flowerID).includes(item.id)).slice(0,7)
+    const filteredFlowerInven = flowers.filter((item: any) => flowerInventory.map((inven: { flowerID: any; }) => inven.flowerID).includes(item.id)).slice(0,10)
+    
+    const filteredPrerollsInven = prerolls.filter((item:any) => prerollsInventory.map((inven: {
+        prerollsID:any
+    }) => inven.prerollsID).includes(item.id)).slice(0,10);
+
+    const filtereEdiblesInven= edibles.filter((item:any) => ediblesInventory.map((inven: {
+        ediblesID:any
+    }) => inven.ediblesID).includes(item.id)).slice(0,10);
+    
+    const filteredVapesInven= vapes.filter((item:any) => vapesInventory.map((inven: {
+        vapesID:any
+    }) => inven.vapesID).includes(item.id)).slice(0,10);
 
     return (
         <div className="main-body-wrapper">
@@ -57,7 +115,10 @@ const Home = ({session, logOut} : {session: Session, logOut: Function}) => {
                         </span>
                     </span>
                 </header>
-                <HomeFlower flowers={filteredFlowerInven}/>
+                <div><HomeFlower flowers={filteredFlowerInven} /></div>
+                <div><HomePrerolls prerolls={filteredPrerollsInven} /></div>
+                <div><HomeEdibles edibles={filtereEdiblesInven} /></div>
+                <div><HomeVapes vapes={filteredVapesInven} /></div>
                 <div className='information'>
                     <div className=''>
                         <Image src="/icons/schedule_40.svg" alt="logo" width={40} height={40}/>

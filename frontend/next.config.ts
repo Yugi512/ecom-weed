@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
             protocol: "https",
             hostname: "images.leafly.com"
         },
-        // {  protocol:"https" , hostname : "https://images.leafly.com/flower-images/gg-4.jpg"},
+        {  protocol:"https" , hostname : "leafly-public.imgix.net"},
         // {  protocol:"https" , hostname : "https://images.leafly.com/flower-images/wedding-cake.jpg"},
         // {  protocol:"https" , hostname : "https://images.leafly.com/flower-images/runtz-nug-image.jpg"},
         // {  protocol:"https" , hostname : "https://images.leafly.com/flower-images/gelato.jpg"},

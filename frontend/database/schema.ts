@@ -135,6 +135,7 @@ export const prerollsTable = pgTable('prerolls',{
     imgUrl: varchar("img_url"),
     type: varchar("type"),
     price: decimal("price"),
+    description: varchar("description"),
     categoryID: uuid("category_id")
         .references(() => productCategoryTable.id),
     discountID: uuid("discount_id")
@@ -174,8 +175,8 @@ export const ediblesTable = pgTable('edibles',{
     id: uuid("id").notNull().unique().defaultRandom().primaryKey(),
     name: varchar("name").unique().notNull(),
     imgUrl: varchar("img_url"),
-    type: varchar("type"),
     price: decimal("price"),
+    description: varchar("description"),
     categoryID: uuid("category_id")
         .references(() => productCategoryTable.id),
     discountID: uuid("discount_id")
@@ -215,8 +216,8 @@ export const vapesTable = pgTable("vapes", {
     id: uuid("id").notNull().unique().defaultRandom().primaryKey(),
     name: varchar("name").unique().notNull(),
     imgUrl: varchar("img_url"),
-    type: varchar("type"),
     price: decimal("price"),
+    description: varchar("description"),
     categoryID: uuid("category_id")
         .references(() => productCategoryTable.id),
     discountID: uuid("discount_id")

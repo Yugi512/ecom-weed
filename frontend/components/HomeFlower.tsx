@@ -1,78 +1,99 @@
-'use client'
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { useEffect, useState, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
+interface Flower {
+  name: string;
+  type: string;
+  imgUrl: string;
+}
 
-const HomeFlower = ({flowers}: {flowers: Array<Object>}) => {
-    const [items, setItems] = useState<any>()
+export const HomeFlower = ({ flowers }: { flowers: Flower[] }) => {
+    const [active, setActive] = useState(3);
+    const itemsRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {    
-        setItems(document?.querySelectorAll('.slider .item')!)
-    },[])
+    useEffect(() => {
+        loadShow();
+    }, [active]);
 
-    let active = 3;
-
-    function loadShow(){
+    const loadShow = () => {
+        if (itemsRef.current) {
+            const items = itemsRef.current.querySelectorAll<HTMLElement>(".item-flower");
+            if(!items.length)return;
         let stt = 0;
 
-        items[active].style.transform = `none`;
-        items[active].style.zIndex = 1;
-        items[active].style.filter = 'none';
-        items[active].style.opacity = 1; 
+        items[active].style.transform = "none";
+        items[active].style.zIndex = "1";
+        items[active].style.filter = "none";
+        items[active].style.opacity = "1";
 
-        for(var i = active + 1; i < items.length; i++ ){
+        for (let i = active + 1; i < items.length; i++) {
             stt++;
-            items[i].style.transform = `translateX(${120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(-1deg)`;
-            items[i].style.zIndex = -stt;
-            items[i].style.filter = 'blur(5px)';
-            items[i].style.opacity = stt > 2 ? 0 : 0.6; 
+            items[i].style.transform = `translateX(${120 * stt}px) scale(${
+            1 - 0.2 * stt
+            }) perspective(16px) rotateY(-1deg)`;
+            items[i].style.zIndex = `${-stt}`;
+            items[i].style.filter = "blur(5px)";
+            items[i].style.opacity = stt > 2 ? "0" : "0.6";
         }
 
         stt = 0;
-        
-        for(var i = active - 1; i >= 0; i-- ){
-            stt++;
-            items[i].style.transform = `translateX(${-120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(-1deg)`;
-            items[i].style.zIndex = -stt;
-            items[i].style.filter = 'blur(5px)';
-            items[i].style.opacity = stt > 2 ? 0 : 0.6; 
-        }
 
-    }
-    loadShow()
+        for (let i = active - 1; i >= 0; i--) {
+            stt++;
+            items[i].style.transform = `translateX(${-120 * stt}px) scale(${
+            1 - 0.2 * stt
+            }) perspective(16px) rotateY(-1deg)`;
+            items[i].style.zIndex = `${-stt}`;
+            items[i].style.filter = "blur(5px)";
+            items[i].style.opacity = stt > 2 ? "0" : "0.6";
+        }
+        }
+    };
 
     const nextOnClick = () => {
-        active = active + 1 < items.length ? active + 1 : active;
-        loadShow()
-    }
+        if (active + 1 < flowers.length) {
+        setActive(active + 1);
+        }
+    };
 
     const prevOnClick = () => {
-        active = active - 1 >= 0 ? active - 1 : active;
-        loadShow() 
-    }
+        if (active - 1 >= 0) {
+        setActive(active - 1);
+        }
+    };
 
     return (
         <div>
-            <h1>Popular Flower Products</h1>
-            <span className='content-container'>
-                <div className='slider'>
-                    {flowers.map((flower: any) => {
-                        return (
-                            <div className='item'>
-                                <Link href={`/products/flowers/${flower.name}`} key={flower.name}>
-                                    <Image src={`${flower.imgUrl}`} alt={''} height={200} width={200}/>
-                                    <p>{flower.type}</p>
-                                    <h3>{flower.name}</h3>
-                                </Link>
-                            </div>
-                        )
-                    })}
+            <h1 className="image-slider-h">Popular Flower Products</h1>
+            <span className="content-container">
+                <div className="slider" ref={itemsRef}>
+                {flowers.map((flower) => (
+                    <div className="item-flower" key={flower.name}>
+                    <Link href={`/products/flowers/${flower.name}`}>
+                        <Image
+                        src={flower.imgUrl}
+                        alt={flower.name}
+                        height={400}
+                        width={400}
+                        />
+                        <p>{flower.type}</p>
+                        <h3>{flower.name}</h3>
+                    </Link>
+                    </div>
+                ))}
                 </div>
+                <button id="next-flower" onClick={nextOnClick}>
+                <Image src="/icons/arrow_forward.svg" alt="" height={40} width={40} />
+                </button>
+                <button id="prev-flower" onClick={prevOnClick}>
+                <Image src="/icons/arrow_back.svg" alt="" height={40} width={40} />
+                </button>
             </span>
         </div>
-    )
-}
+    );
+};
 
 export default HomeFlower;

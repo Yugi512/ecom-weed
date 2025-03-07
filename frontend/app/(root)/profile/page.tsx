@@ -1,15 +1,18 @@
 import React from "react";
 
-import {auth} from "@/auth"
-import { Session } from "next-auth";
-import SideBar from "@/components/SideNavBar";
-// import {redirect} from "next/navigation"
+import {auth, signOut} from "@/auth"
+import ProfilePage from "@/components/ProfilePage";
+import { redirect } from "next/navigation";
 
-const Page =  ({ session, logOut }: { session: Session; logOut: Function }) => {    
+const Page = async () => {   
+    const session = await auth()
+    if(!session ) redirect("/sign-in")
+    const logOut = async () => {
+        "use server"
+        await signOut()
+    } 
     return (
-        <div className="main-body-wrapper">
-            <h1>{session?.user?.name}</h1>
-        </div>
+        <ProfilePage session={session} logOut={logOut} />
     )
 
 }

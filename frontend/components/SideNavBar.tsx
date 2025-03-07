@@ -58,12 +58,12 @@ const SideBar = ({pathName}: {pathName: string}) => {
                             <span>Home</span>
                         </Link>
                     </li>
-                    <li id="/menu">
+                    {/* <li id="/menu">
                         <Link href="/menu" >
                             <Image src="/icons/menu_24dp_F7E7CE_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
                             <span>Menu</span>        
                         </Link>
-                    </li>
+                    </li> */}
                     <li >
                         <button onClick={(e) => toggleSubMenu(e.currentTarget)} className="dropdown-btn">
                             <Image src="/icons/inventory_2_24dp_F7E7CE_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
