@@ -7,10 +7,9 @@ import Link from "next/link";
 const FlowerProducts = () => {
     const [flowers, setFlowers] = useState<any>([])
     const [flowerInventory,setInventory] = useState<any>([])
-    const [available,setAvailable] = useState<any>([])
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/flowers/true")
+        fetch("http://localhost:3000/api/flowers/inventory")
             .then(res => res.json())
             .then(data => setInventory(data))
 
@@ -19,48 +18,29 @@ const FlowerProducts = () => {
             .then(data => setFlowers(data))
     },[])
 
-    const filtered = flowers.filter((item: any) => flowerInventory.map((inven: { flowerID: any; }) => inven.flowerID).includes(item.id))
+    const filteredFlowerInven = flowers.filter((item: any) => flowerInventory.map((inven: { flowerID: any; }) => inven.flowerID).includes(item.id))
 
-    console.log(filtered)
+    console.log(filteredFlowerInven)
+
+    if(!flowers) return <h1>loading....</h1>
+    
     return (
         <div className="product-items-page">
             <span>
-                <button>
-                    <Image src={'/icons/arrow_back.svg'} height={45} width={45} alt={""}/>
-                </button>
-                {filtered.map((flower: any) => {
-                    
-                })}
-                <button>
-                    <Image src={'/icons/arrow_forward.svg'} height={45} width={45} alt={""}/>
-                </button>
-            </span>
-            <span>
-                <button>
-                    <Image src={'/icons/arrow_back.svg'} height={45} width={45} alt={""}/>
-                </button>
-                images go here
-                <button>
-                    <Image src={'/icons/arrow_forward.svg'} height={45} width={45} alt={""}/>
-                </button>
-            </span>
-            <span>
-                <button>
-                    <Image src={'/icons/arrow_back.svg'} height={45} width={45} alt={""}/>
-                </button>
-                images go here
-                <button>
-                    <Image src={'/icons/arrow_forward.svg'} height={45} width={45} alt={""}/>
-                </button>
-            </span>
-            <span>
-                <button>
-                    <Image src={'/icons/arrow_back.svg'} height={45} width={45} alt={""}/>
-                </button>
-                images go here
-                <button>
-                    <Image src={'/icons/arrow_forward.svg'} height={45} width={45} alt={""}/>
-                </button>
+                {filteredFlowerInven.map((flower: any) => (
+                    <div className="item-card" key={flower.name}>
+                        <Link href={`/products/flowers/${flower.name}`}>
+                            <Image
+                            src={flower.imgUrl}
+                            alt={flower.name}
+                            height={400}
+                            width={400}
+                            />
+                            <p>{flower.type}</p>
+                            <h3>{flower.name}</h3>
+                        </Link>
+                    </div>
+                ))}
             </span>
         </div>
     )   

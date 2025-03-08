@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-
 const SideBar = ({pathName}: {pathName: string}) => {
 
     const [toggleButton,setToggleBtn] = useState<Element>()
@@ -18,7 +17,7 @@ const SideBar = ({pathName}: {pathName: string}) => {
     },[])
 
     function highLightText(){
-        pathElement?.classList.add('active')
+        pathElement?.classList.add('active')    
     }
     
     highLightText()
@@ -72,12 +71,12 @@ const SideBar = ({pathName}: {pathName: string}) => {
                         </button>
                         <ul className="sub-menu">
                             <div >
-                                <li id="/products" >
+                                {/* <li id="/products" >
                                     <Link href={'/products'} >
                                         <Image src="/icons/package_2_24dp_F7E7CE_FILL0_wght400_GRAD0_opsz24.svg" alt="logo" width={24} height={24}/>
                                         <span>All</span>
                                     </Link>
-                                </li>
+                                </li> */}
                                 <li id="/products/flowers">
                                     <Link href={'/products/flowers'} >
                                         <Image src="/icons/bud.png" alt="logo" width={24} height={24}/>

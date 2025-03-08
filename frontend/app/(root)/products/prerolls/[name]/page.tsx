@@ -1,12 +1,12 @@
 import React from "react";
-import Flower from "@/components/Flower";
+import Prerolls from "@/components/Prerolls";
 
 const Page = async ({params} : {params: Promise<{name: string}>}) => {
     const name = (await params).name
 
     return (
         <div>
-            <Flower flower={name} />
+            <Prerolls preroll={name} />
         </div>
     ) 
 }

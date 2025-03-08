@@ -72,16 +72,16 @@ export const HomeFlower = ({ flowers }: { flowers: Flower[] }) => {
                 <div className="slider" ref={itemsRef}>
                 {flowers.map((flower) => (
                     <div className="item-flower" key={flower.name}>
-                    <Link href={`/products/flowers/${flower.name}`}>
-                        <Image
-                        src={flower.imgUrl}
-                        alt={flower.name}
-                        height={400}
-                        width={400}
-                        />
-                        <p>{flower.type}</p>
-                        <h3>{flower.name}</h3>
-                    </Link>
+                        <Link href={`/products/flowers/${flower.name}`}>
+                            <Image
+                            src={flower.imgUrl}
+                            alt={flower.name}
+                            height={400}
+                            width={400}
+                            />
+                            <p>{flower.type}</p>
+                            <h3>{flower.name}</h3>
+                        </Link>
                     </div>
                 ))}
                 </div>
