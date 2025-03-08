@@ -119,6 +119,9 @@ const Home = ({session, logOut} : {session: Session, logOut: Function}) => {
                 <div><HomePrerolls prerolls={filteredPrerollsInven} /></div>
                 <div><HomeEdibles edibles={filtereEdiblesInven} /></div>
                 <div><HomeVapes vapes={filteredVapesInven} /></div>
+                <div className='work-in-progress'>
+                    <h1>website is still a work in progress, more features will be added soon</h1>
+                </div>
                 <div className='information'>
                     <div className=''>
                         <Image src="/icons/schedule_40.svg" alt="logo" width={40} height={40}/>
