@@ -23,10 +23,10 @@ export const GET = async (req: Request,{params} : {params: Promise<{name: string
 
 }
 
-export const PATCH = async (req: Request, { params }: { params: { name : string }}) => {
+// export const PATCH = async (req: Request, { params }: { params: { name : string }}) => {
 
-}
+// }
 
-export const DELETE = async (req: Request, { params }: { params: { name : string }}) => {
+// export const DELETE = async (req: Request, { params }: { params: { name : string }}) => {
 
-}
+// }
