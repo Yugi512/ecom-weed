@@ -82,7 +82,7 @@ const AllProducts = () => {
 
     useEffect(() => {
         setAllProducts(filteredFlowerInven.concat(filtereEdiblesInven,filteredPrerollsInven,filteredVapesInven))
-    },[])
+    },[filtereEdiblesInven,filteredFlowerInven,filteredPrerollsInven,filteredVapesInven])
 
 
     return (

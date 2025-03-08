@@ -6,7 +6,7 @@ import {eq} from "drizzle-orm";
 export const GET = async (req: Request,{params} : {params: Promise<{name: string}>}) => {
     const name = (await params).name
     const strain = name.replace(/%20/g," ")
-    let data: any = {}
+    const data: any = {}
     try{
         await db.select().from(ediblesTable).where(eq(ediblesTable.name, strain))
             .then(async (product: any) => {
