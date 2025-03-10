@@ -9,11 +9,11 @@ const VapesProducts = () => {
     const [vapesInventory,setInventory] = useState<any>([])
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/vapes/inventory")
+        fetch("https://ecom-weed.vercel.app/api/vapes/inventory")
             .then(res => res.json())
             .then(data => setInventory(data))
 
-        fetch("http://localhost:3000/api/vapes")
+        fetch("https://ecom-weed.vercel.app/api/vapes")
             .then(res => res.json())
             .then(data => setVapes(data))
     },[])

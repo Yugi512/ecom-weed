@@ -11,7 +11,7 @@ const Flower = ({flower}: {flower: string}) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/flowers/${flower}`)
+        fetch(`https://ecom-weed.vercel.app/api/flowers/${flower}`)
             .then(res => res.json())
             .then(flower => {
                 setData(flower)

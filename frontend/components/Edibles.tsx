@@ -10,7 +10,7 @@ const Edibles = ({edibles}: {edibles: string}) => {
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        fetch(`http://localhost:3000/api/edibles/${edibles}`)
+        fetch(`https://ecom-weed.vercel.app/api/edibles/${edibles}`)
             .then(res => res.json())
             .then(edible => {
                 setData(edible)

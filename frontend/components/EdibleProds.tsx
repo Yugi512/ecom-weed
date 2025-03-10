@@ -9,11 +9,11 @@ const EdiblesProducts = () => {
     const [edibleInventory,setInventory] = useState<any>([])
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/edibles/inventory")
+        fetch("https://ecom-weed.vercel.app/api/edibles/inventory")
             .then(res => res.json())
             .then(data => setInventory(data))
 
-        fetch("http://localhost:3000/api/edibles")
+        fetch("https://ecom-weed.vercel.app/api/edibles")
             .then(res => res.json())
             .then(data => setEdibles(data))
     },[])

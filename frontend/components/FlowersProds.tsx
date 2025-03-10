@@ -9,11 +9,11 @@ const FlowerProducts = () => {
     const [flowerInventory,setInventory] = useState<any>([])
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/flowers/inventory")
+        fetch("https://ecom-weed.vercel.app/api/flowers/inventory")
             .then(res => res.json())
             .then(data => setInventory(data))
 
-        fetch("http://localhost:3000/api/flowers")
+        fetch("https://ecom-weed.vercel.app/api/flowers")
             .then(res => res.json())
             .then(data => setFlowers(data))
     },[])

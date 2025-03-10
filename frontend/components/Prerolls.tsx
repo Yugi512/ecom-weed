@@ -10,7 +10,7 @@ const Prerolls = ({preroll}: {preroll: string}) => {
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        fetch(`http://localhost:3000/api/prerolls/${preroll}`)
+        fetch(`https://ecom-weed.vercel.app/api/prerolls/${preroll}`)
             .then(res => res.json())
             .then(pre => {
                 setData(pre)

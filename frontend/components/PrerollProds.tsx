@@ -9,11 +9,11 @@ const PrerollsProducts = () => {
     const [prerollInventory,setInventory] = useState<any>([])
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/prerolls/inventory")
+        fetch("https://ecom-weed.vercel.app/api/prerolls/inventory")
             .then(res => res.json())
             .then(data => setInventory(data))
 
-        fetch("http://localhost:3000/api/prerolls")
+        fetch("https://ecom-weed.vercel.app/api/prerolls")
             .then(res => res.json())
             .then(data => setPrerolls(data))
     },[])

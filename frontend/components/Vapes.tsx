@@ -10,7 +10,7 @@ const Vapes = ({vapes}: {vapes: string}) => {
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        fetch(`http://localhost:3000/api/vapes/${vapes}`)
+        fetch(`https://ecom-weed.vercel.app/api/vapes/${vapes}`)
             .then(res => res.json())
             .then(vape => {
                 setData(vape)
